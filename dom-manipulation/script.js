@@ -50,3 +50,36 @@ newQuoteButton.addEventListener("click", showRandomQuote);
 
 // Show a quote initially
 showRandomQuote();
+
+
+function addQuote() {
+  const quoteText = document.getElementById("newQuoteText").value.trim();
+  const quoteCategory = document.getElementById("newQuoteCategory").value.trim();
+
+  if (quoteText === "" || quoteCategory === "") {
+    alert("Please fill in both the quote and category.");
+    return;
+  }
+
+  // Add new quote to array
+  quotes.push({ text: quoteText, category: quoteCategory });
+
+  // Update category dropdown if it's a new category
+  const exists = [...categoryFilter.options].some(option =>
+    option.value.toLowerCase() === quoteCategory.toLowerCase()
+  );
+
+  if (!exists) {
+    const newOption = document.createElement("option");
+    newOption.value = quoteCategory;
+    newOption.textContent = quoteCategory;
+    categoryFilter.appendChild(newOption);
+  }
+
+  // Clear input fields
+  document.getElementById("newQuoteText").value = "";
+  document.getElementById("newQuoteCategory").value = "";
+
+  alert("New quote added!");
+  showRandomQuote(); // Optionally display it right away
+}
