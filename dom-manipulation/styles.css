@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1 {
+  color: #444;
+}
+
+#quoteDisplay {
+  background: #fff;
+  padding: 20px;
+  border-left: 5px solid #007BFF;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  font-size: 1.2em;
+}
+
+select, input, button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.form-section {
+  margin-top: 30px;
+  background: #fff;
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
