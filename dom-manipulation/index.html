@@ -4,26 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dynamic Quote Generator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Dynamic Quote Generator</h1>
+  <div class="container">
+    <h1>Dynamic Quote Generator</h1>
 
-  <!-- Quote Display Section -->
-  <div id="quoteDisplay" style="margin-bottom: 20px; font-size: 1.2em;"></div>
-  <button id="newQuote">Show New Quote</button>
+    <div class="add-section">
+      <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+      <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+      <button onclick="addQuote()">Add Quote</button>
+    </div>
 
-  <!-- Quote Form Section -->
-  <div style="margin-top: 30px;">
-    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-    <button onclick="addQuote()">Add Quote</button>
+    <div class="filter-section">
+      <label for="categoryFilter">Filter by Category:</label>
+      <select id="categoryFilter" onchange="filterQuotes()">
+        <option value="all">All Categories</option>
+      </select>
+    </div>
+
+    <div id="quoteDisplay"></div>
+
+    <div class="file-section">
+      <button onclick="exportToJsonFile()">Export to JSON</button>
+      <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+      <button onclick="syncWithServer()">Sync with Server</button>
+    </div>
   </div>
-
-<div>
-  <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-  <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-  <button onclick="addQuote()">Add Quote</button>
-</div>
 
   <script src="script.js"></script>
 </body>
