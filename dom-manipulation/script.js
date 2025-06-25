@@ -158,3 +158,41 @@ if (lastQuote) {
   const quote = JSON.parse(lastQuote);
   quoteDisplay.innerHTML = `"${quote.text}" — <strong>[${quote.category}]</strong>`;
 }
+
+function filterQuotes() {
+  const category = document.getElementById("categoryFilter").value;
+  localStorage.setItem("lastCategory", category); // Also handles requirement #2
+
+  const filtered = category === "all"
+    ? quotes
+    : quotes.filter(q => q.category === category);
+
+  if (filtered.length > 0) {
+    quoteDisplay.innerHTML = `"${filtered[0].text}" — <strong>[${filtered[0].category}]</strong>`;
+    sessionStorage.setItem("lastQuote", JSON.stringify(filtered[0]));
+  } else {
+    quoteDisplay.innerHTML = "<p>No quotes available in this category.</p>";
+  }
+}
+
+document.getElementById("categoryFilter").addEventListener("change", filterQuotes);
+
+localStorage.setItem("lastCategory", category);
+
+function populateCategories() {
+  const select = document.getElementById("categoryFilter");
+  const currentValue = localStorage.getItem("lastCategory") || "all";
+  const categories = ["all", ...new Set(quotes.map(q => q.category))];
+
+  select.innerHTML = "";
+  categories.forEach(cat => {
+    const option = document.createElement("option");
+    option.value = cat;
+    option.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+    if (cat === currentValue) option.selected = true;
+    select.appendChild(option);
+  });
+}
+
+populateCategories();
+filterQuotes(); // shows filtered or all quotes based on lastCategory
