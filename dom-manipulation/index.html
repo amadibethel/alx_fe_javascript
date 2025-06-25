@@ -1,37 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dynamic Quote Generator</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Quote Generator</title>
+  </head>
+  <body>
     <h1>Dynamic Quote Generator</h1>
-
-    <div class="add-section">
-      <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-      <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-      <button onclick="addQuote()">Add Quote</button>
+    <div id="quoteDisplay">
+      <ul id="quoteList"></ul>
     </div>
+    <button id="newQuote">Show New Quote</button>
+     <div>
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button onclick="createAddQuoteForm()">Add Quote</button>
+    <button id="download" onclick="download()">Download</button>
+    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)">
 
-    <div class="filter-section">
-      <label for="categoryFilter">Filter by Category:</label>
-      <select id="categoryFilter" onchange="filterQuotes()">
-        <option value="all">All Categories</option>
-      </select>
-    </div>
-
-    <div id="quoteDisplay"></div>
-
-    <div class="file-section">
-      <button onclick="exportToJsonFile()">Export to JSON</button>
-      <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
-      <button onclick="syncWithServer()">Sync with Server</button>
-    </div>
   </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+    <script src="script.js"></script>
+  </body>
+  </html>
