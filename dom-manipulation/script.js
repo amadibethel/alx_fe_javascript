@@ -171,3 +171,47 @@ window.onload = () => {
   document.getElementById("importFile").addEventListener("change", importFromJsonFile);
   document.getElementById("exportBtn").addEventListener("click", exportQuotesToJson);
 };
+
+function addQuote() {
+  const textInput = document.getElementById("newQuoteText");
+  const categoryInput = document.getElementById("newQuoteCategory");
+
+  const newText = textInput.value.trim();
+  const newCategory = categoryInput.value.trim();
+
+  if (newText && newCategory) {
+    const newQuote = {
+      text: newText,
+      category: newCategory,
+    };
+
+    quotes.push(newQuote); // Add to array
+    saveQuotes();          // Save to localStorage
+    populateCategories();  // Update categories
+    showRandomQuote();     // Immediately update DOM with a new quote
+
+    // Clear input fields
+    textInput.value = "";
+    categoryInput.value = "";
+
+    alert("Quote added successfully!");
+  } else {
+    alert("Please enter both quote and category.");
+  }
+}
+
+window.onload = () => {
+  loadQuotes();
+  populateCategories();
+
+  document.getElementById("newQuote").addEventListener("click", showRandomQuote);
+  document.getElementById("addQuoteBtn").addEventListener("click", addQuote);
+
+  // Restore last quote
+  const lastQuote = sessionStorage.getItem("lastQuote");
+  if (lastQuote) {
+    const quote = JSON.parse(lastQuote);
+    document.getElementById("quoteDisplay").innerHTML = `"${quote.text}" — <strong>[${quote.category}]</strong>`;
+  }
+};
+
