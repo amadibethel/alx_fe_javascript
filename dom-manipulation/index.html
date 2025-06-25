@@ -26,6 +26,22 @@
     <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
   </div>
 
+<!-- Dropdown for filtering -->
+<select id="categoryFilter">
+  <!-- Populated dynamically -->
+</select>
+
+<!-- Display quote -->
+<div id="quoteDisplay"></div>
+
+<!-- Add new quote -->
+<input type="text" id="newQuoteText" placeholder="Enter a new quote">
+<input type="text" id="newQuoteCategory" placeholder="Enter quote category">
+<button id="addQuoteBtn">Add Quote</button>
+
+<!-- Button to show new random quote -->
+<button id="newQuote">Show New Quote</button>
+
   <script src="script.js"></script>
 </body>
 </html>
