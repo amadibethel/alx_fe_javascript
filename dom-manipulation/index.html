@@ -1,54 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic Quote Generator</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
-  <div>
-    <select id="categoryFilter" onchange="filterQuotes()">
-      <option value="all">All Categories</option>
-    </select>
-  </div>
+
+  <div id="syncNotification" style="display:none; background: #e0ffe0; padding: 10px; border: 1px solid #0c0; margin-bottom: 1rem;"></div>
+
+  <select id="categoryFilter" onchange="filterQuotes()">
+    <option value="all">All Categories</option>
+  </select>
+
   <div id="quoteDisplay"></div>
+
   <button id="newQuote">Show New Quote</button>
 
-  <div>
-    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-    <button onclick="addQuote()">Add Quote</button>
+  <div id="formContainer">
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote">
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category">
+    <button id="addQuoteBtn">Add Quote</button>
   </div>
 
   <div>
-    <button onclick="exportToJson()">Export Quotes (JSON)</button>
-    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+    <input type="file" id="importFile" accept=".json">
+    <button id="exportBtn">Export Quotes</button>
   </div>
-
-<input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-<input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-<button id="addQuoteBtn">Add Quote</button>
-
-<button id="newQuote">Show New Quote</button>
-<div id="quoteDisplay"></div>
-
-
-<!-- Dropdown for filtering -->
-<select id="categoryFilter">
-  <!-- Populated dynamically -->
-</select>
-
-<!-- Display quote -->
-<div id="quoteDisplay"></div>
-
-<!-- Add new quote -->
-<input type="text" id="newQuoteText" placeholder="Enter a new quote">
-<input type="text" id="newQuoteCategory" placeholder="Enter quote category">
-<button id="addQuoteBtn">Add Quote</button>
-
-<!-- Button to show new random quote -->
-<button id="newQuote">Show New Quote</button>
 
   <script src="script.js"></script>
 </body>
