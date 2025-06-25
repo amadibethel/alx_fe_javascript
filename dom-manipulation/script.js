@@ -130,3 +130,24 @@ function notifyUser(msg) {
   document.body.insertBefore(note, document.getElementById("quoteDisplay"));
   setTimeout(() => note.remove(), 4000);
 }
+
+function filterQuotes() {
+  const category = document.getElementById("categoryFilter").value;
+  localStorage.setItem("lastCategory", category); // saving selection ✅
+  const filtered = category === "all" ? quotes : quotes.filter(q => q.category === category);
+  if (filtered.length > 0) {
+    displayQuote(filtered[0]);
+  } else {
+    document.getElementById("quoteDisplay").innerHTML = `<p>No quotes available in this category.</p>`;
+  }
+}
+
+localStorage.setItem("lastCategory", category);
+
+let lastCategory = localStorage.getItem("lastCategory") || "all";
+
+window.onload = () => {
+  populateCategories();
+  document.getElementById("categoryFilter").value = lastCategory;
+  filterQuotes();
+};
